@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/event_name_display"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/event_date_display"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/privacy_display"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/viewPosterBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View Poster"
+        android:visibility="gone" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/feedbackTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Feedback"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/add_feedback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Feedback" />
+
+</LinearLayout>
