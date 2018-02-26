@@ -38,7 +38,7 @@ public class AttendanceRecyclerAdapter extends RecyclerView.Adapter<AttendanceRe
         name = (TextView)holder.itemView.findViewById(R.id.nameTxt);
         name.setText(students.get(position).getName());
         id = (TextView)holder.itemView.findViewById(R.id.idTxt);
-        id.setText(students.get(position).getName());
+        id.setText(students.get(position).getId());
         mark = (CheckBox)holder.itemView.findViewById(R.id.attChk);
         mark.setChecked(students.get(position).isMark());
 

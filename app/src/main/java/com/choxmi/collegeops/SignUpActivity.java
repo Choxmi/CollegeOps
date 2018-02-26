@@ -5,10 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -24,6 +27,7 @@ public class SignUpActivity extends AppCompatActivity implements AsyncResponse{
     Spinner typeSpinner,branch,grade;
     Button signupBtn;
     ProgressDialog progress;
+    RadioGroup types;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,10 +40,11 @@ public class SignUpActivity extends AppCompatActivity implements AsyncResponse{
         grade = (Spinner)findViewById(R.id.gradeSpin);
         signupBtn = (Button)findViewById(R.id.signUpBtn);
 
-        typeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        types = (RadioGroup)findViewById(R.id.typeGroup);
+        types.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position==1){
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId==R.id.stBtn){
                     branch.setVisibility(View.VISIBLE);
                     grade.setVisibility(View.VISIBLE);
                 }else{
@@ -47,23 +52,43 @@ public class SignUpActivity extends AppCompatActivity implements AsyncResponse{
                     grade.setVisibility(View.GONE);
                 }
             }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
         });
+
+//        typeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                if(position==1){
+//                    branch.setVisibility(View.VISIBLE);
+//                    grade.setVisibility(View.VISIBLE);
+//                }else{
+//                    branch.setVisibility(View.GONE);
+//                    grade.setVisibility(View.GONE);
+//                }
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
 
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    String url = "http://choxcreations.000webhostapp.com/CollegeOps/Process.php?type=signup&user="+userIdSignUp.getText().toString()+"&user_type="+typeSpinner.getSelectedItem().toString();
-                    if(typeSpinner.getSelectedItem().toString().equals("STU")){
+                    String type = ((RadioButton)findViewById(types.getCheckedRadioButtonId())).getText().toString();
+                    if(type.equals("Student")){
+                        type = "STU";
+                    }else{
+                        type = "FAC";
+                    }
+                    String url = "http://choxcreations.000webhostapp.com/CollegeOps/Process.php?type=signup&user="+userIdSignUp.getText().toString()+"&user_type="+type;
+                    if(type.equals("STU")){
                         url = url+"&grade="+grade.getSelectedItem().toString()+"&branch="+branch.getSelectedItem().toString();
                     }
                     Connector connector = new Connector(url,"");
                     connector.delegate = SignUpActivity.this;
+                    Log.e("URL",url);
                     progress = new ProgressDialog(SignUpActivity.this);
                     progress.setTitle("Loading");
                     progress.setMessage("Wait while loading...");

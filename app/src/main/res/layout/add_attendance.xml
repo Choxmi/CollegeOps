@@ -25,7 +25,7 @@
         android:layout_height="47dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="24dp"
-        android:entries="@array/Year"
+        android:entries="@array/Month"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.083"
         app:layout_constraintLeft_toLeftOf="parent"

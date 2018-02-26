@@ -98,4 +98,9 @@ public class LoginActivity extends AppCompatActivity implements AsyncResponse{
             Toast.makeText(LoginActivity.this,"User Does not exist",Toast.LENGTH_LONG).show();
         }
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }

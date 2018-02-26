@@ -63,7 +63,7 @@ public class StuAttendanceActivity extends AppCompatActivity implements AsyncRes
             @Override
             public void onClick(View v) {
                 try {
-                    String url = "http://choxcreations.000webhostapp.com/CollegeOps/Process.php?type=getAtt&userId="+user+"&year="+year.getSelectedItem().toString();
+                    String url = "http://choxcreations.000webhostapp.com/CollegeOps/Process.php?type=getAtt&userId="+user+"&sem="+year.getSelectedItem().toString();
                     Log.e("URL",url);
                     Connector connector = new Connector(url,"");
                     connector.delegate = StuAttendanceActivity.this;

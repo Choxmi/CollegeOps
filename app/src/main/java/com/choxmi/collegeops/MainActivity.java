@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }else {
-            btn1.setText("Add Users");
+            btn1.setText("Add Student/Faculty");
             btn2.setText("Remove Student/Faculty");
             btn3.setText("Add events");
             btn4.setText("Feedback");
@@ -106,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
             idDesc.setVisibility(View.INVISIBLE);
             idTxt.setVisibility(View.INVISIBLE);
             branchTxt.setVisibility(View.GONE);
+            nameTxt.setVisibility(View.VISIBLE);
+            nameDec.setVisibility(View.VISIBLE);
             nameTxt.setText(current.getStringExtra("name"));
             //idTxt.setText(current.getStringExtra("id"));
 
@@ -138,5 +140,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }

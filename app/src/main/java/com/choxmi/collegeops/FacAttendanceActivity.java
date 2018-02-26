@@ -78,7 +78,7 @@ public class FacAttendanceActivity extends AppCompatActivity implements AsyncRes
 
                 for(int j=0;j<students.size();j++){
                     try {
-                        String url = "http://choxcreations.000webhostapp.com/CollegeOps/Process.php?type=markAtt&userId="+students.get(j).getId()+"&month="+date[1]+"&year="+date[0]+"&date="+date[2]+"&attendance="+(students.get(j).isMark()?"1":"0")+"&subject="+subject.getSelectedItem().toString();
+                        String url = "http://choxcreations.000webhostapp.com/CollegeOps/Process.php?type=markAtt&userId="+students.get(j).getId()+"&month="+date[1]+"&year="+date[0]+"&date="+date[2]+"&attendance="+(students.get(j).isMark()?"1":"0")+"&subject="+subject.getSelectedItem().toString()+"&sem="+grade.getSelectedItem().toString();
                         Connector connector = new Connector(url,"");
                         connector.delegate = FacAttendanceActivity.this;
                         connector.execute();
