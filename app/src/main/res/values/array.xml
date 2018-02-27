@@ -35,11 +35,8 @@
     </string-array>
     <string-array name="Subject">
         <item>Subject</item>
-        <item>CSE</item>
-        <item>ECE</item>
-        <item>EEE</item>
-        <item>MECH</item>
-        <item>CIVIL</item>
+        <item>Subject 1</item>
+        <item>Subject 2</item>
     </string-array>
     <string-array name="Section">
         <item>Section</item>
