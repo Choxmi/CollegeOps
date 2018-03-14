@@ -1,5 +1,6 @@
 package com.choxmi.collegeops;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +14,8 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import java.net.MalformedURLException;
+
 /**
  * Created by Choxmi on 12/22/2017.
  */
@@ -24,12 +27,16 @@ public class FragmentEvents extends Fragment {
     Button addFeedback,viewPoster;
     EditText feedbackTxt;
     TextView name,date,privacy;
+    Context context;
+    int user;
 
     public FragmentEvents(){
     }
 
-    public FragmentEvents(int position){
+    public FragmentEvents(int position, Context context,int user){
         this.position = position;
+        this.context = context;
+        this.user = user;
     }
 
     @Nullable
@@ -84,9 +91,15 @@ public class FragmentEvents extends Fragment {
             @Override
             public void onClick(View v) {
                 StuRatingActivity.events.get(position).setFeedback(feedbackTxt.getText().toString());
+                try {
+                    Connector connector = new Connector("http://choxcreations.000webhostapp.com/CollegeOps/Process.php?type=eventFeedback&userId="+user+"&rating="+StuRatingActivity.events.get(position).getRating()+"&feedback="+StuRatingActivity.events.get(position).getFeedback().replaceAll(" ","_")+"&eventId="+StuRatingActivity.events.get(StuRatingActivity.mPager.getCurrentItem()).getEventId(),"");
+                    connector.delegate = (AsyncResponse) context;
+                    connector.execute();
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
             }
         });
-
         return rootView;
     }
 }

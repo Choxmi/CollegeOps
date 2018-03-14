@@ -53,9 +53,12 @@ public class MainActivity extends AppCompatActivity {
             btn3.setVisibility(View.GONE);
             btn4.setVisibility(View.GONE);
 
+            idDesc.setVisibility(View.INVISIBLE);
+            idTxt.setVisibility(View.INVISIBLE);
+            branchTxt.setVisibility(View.GONE);
+            nameTxt.setVisibility(View.VISIBLE);
+            nameDec.setVisibility(View.VISIBLE);
             nameTxt.setText(current.getStringExtra("name"));
-            branch.setText(current.getStringExtra("branch"));
-            idTxt.setText("STU_"+current.getIntExtra("id",0));
 
             btn1.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -80,8 +83,12 @@ public class MainActivity extends AppCompatActivity {
             btn3.setVisibility(View.GONE);
             btn4.setVisibility(View.GONE);
 
+            idDesc.setVisibility(View.INVISIBLE);
+            idTxt.setVisibility(View.INVISIBLE);
+            branchTxt.setVisibility(View.GONE);
+            nameTxt.setVisibility(View.VISIBLE);
+            nameDec.setVisibility(View.VISIBLE);
             nameTxt.setText(current.getStringExtra("name"));
-            idTxt.setText("FAC_"+current.getIntExtra("id",0));
 
             btn1.setOnClickListener(new View.OnClickListener() {
                 @Override

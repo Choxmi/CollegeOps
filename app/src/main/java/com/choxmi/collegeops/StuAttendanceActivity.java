@@ -33,7 +33,7 @@ import java.util.List;
 public class StuAttendanceActivity extends AppCompatActivity implements AsyncResponse {
 
     PieChart pieChart;
-    Spinner mnth,year;
+    Spinner semester,subject,year;
     Button getData;
     ImageButton back;
     ProgressDialog progress;
@@ -45,8 +45,9 @@ public class StuAttendanceActivity extends AppCompatActivity implements AsyncRes
         setContentView(R.layout.view_attendence);
 
         pieChart = (PieChart)findViewById(R.id.attendencePie);
-        mnth = (Spinner)findViewById(R.id.attMnth);
         year = (Spinner)findViewById(R.id.attYr);
+        semester = (Spinner)findViewById(R.id.attSem);
+        subject = (Spinner)findViewById(R.id.attSub);
         getData = (Button)findViewById(R.id.getAtt);
         back = (ImageButton) findViewById(R.id.backBtn1);
 
@@ -63,7 +64,7 @@ public class StuAttendanceActivity extends AppCompatActivity implements AsyncRes
             @Override
             public void onClick(View v) {
                 try {
-                    String url = "http://choxcreations.000webhostapp.com/CollegeOps/Process.php?type=getAtt&userId="+user+"&sem="+year.getSelectedItem().toString();
+                    String url = "http://choxcreations.000webhostapp.com/CollegeOps/Process.php?type=getAtt&userId="+user+"&year="+year.getSelectedItem().toString()+"&sem="+semester.getSelectedItem().toString()+"&subject="+subject.getSelectedItem().toString();
                     Log.e("URL",url);
                     Connector connector = new Connector(url,"");
                     connector.delegate = StuAttendanceActivity.this;

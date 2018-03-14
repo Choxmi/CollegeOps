@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -25,12 +26,13 @@ import java.util.ArrayList;
 
 public class StuRatingActivity extends AppCompatActivity implements AsyncResponse{
 
-    ViewPager mPager;
+    public static ViewPager mPager;
     EventSlideAdapter mPagerAdapter;
     ProgressDialog progress;
     public static ArrayList<Event> events;
     Button submitFeed;
     int user;
+    static int count=1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -76,6 +78,11 @@ public class StuRatingActivity extends AppCompatActivity implements AsyncRespons
     @Override
     public void processFinish(String response) throws JSONException {
         progress.dismiss();
+
+        if(response.equals("200")){
+            Toast.makeText(StuRatingActivity.this,"Feedback Added successfully",Toast.LENGTH_SHORT).show();
+        }
+
         try {
             JSONArray ja = new JSONArray(response);
             for(int i=0;i<ja.length();i++){
@@ -106,12 +113,18 @@ public class StuRatingActivity extends AppCompatActivity implements AsyncRespons
 
         @Override
         public Fragment getItem(int position) {
-            return new FragmentEvents(position);
+            Log.e("pos",""+position);
+            return new FragmentEvents(position,StuRatingActivity.this, user);
         }
 
         @Override
         public int getCount() {
             return StuRatingActivity.events.size();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }
