@@ -23,7 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Student" />
+            android:text="Student"
+            android:textColor="@color/colorText" />
 
         <RadioButton
             android:id="@+id/fcBtn"
@@ -31,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Faculty"
+            android:textColor="@color/colorText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -99,6 +101,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="UserID"
+        android:textColor="@color/colorText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.139"
@@ -131,6 +134,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textColor="@color/colorText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -146,6 +150,7 @@
         android:layout_marginTop="8dp"
         android:background="@null"
         android:text="Submit"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

@@ -25,14 +25,18 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:checked="true"
-            android:text="Student" />
+            android:text="Student"
+            android:textColor="@color/colorText"
+            android:textColorLink="@color/colorPrimary" />
 
         <RadioButton
             android:id="@+id/facRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Faculty" />
+            android:text="Faculty"
+            android:textColor="@color/colorText"
+            android:textColorLink="@color/colorPrimary" />
     </RadioGroup>
 
     <TextView
@@ -58,6 +62,7 @@
         android:layout_marginBottom="64dp"
         android:background="@null"
         android:text="Remove"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />

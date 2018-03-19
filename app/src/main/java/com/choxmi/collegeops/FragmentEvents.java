@@ -83,6 +83,7 @@ public class FragmentEvents extends Fragment {
                 return false;
             }
         });
+        ratingBar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 
         feedbackTxt = (EditText)rootView.findViewById(R.id.feedbackTxt);
         addFeedback = (Button)rootView.findViewById(R.id.add_feedback);

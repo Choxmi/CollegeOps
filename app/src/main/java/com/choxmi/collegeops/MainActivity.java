@@ -1,6 +1,7 @@
 package com.choxmi.collegeops;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,11 +15,14 @@ public class MainActivity extends AppCompatActivity {
     Button btn1,btn2,btn3,btn4,exit;
     Intent carrier,current;
     TextView nameTxt,nameDec, idTxt, idDesc, branch, branchTxt;
+    SharedPreferences sf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        sf = getSharedPreferences("vitam",MODE_PRIVATE);
 
         current = getIntent();
 
@@ -31,6 +35,15 @@ public class MainActivity extends AppCompatActivity {
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                SharedPreferences.Editor sfe = sf.edit();
+                sfe.putString("type", "");
+                sfe.putString("name", "");
+                sfe.putString("id", "");
+                sfe.putString("grade", "");
+                sfe.putString("branch", "");
+
+                sfe.commit();
                 finish();
                 System.exit(0);
             }
@@ -43,9 +56,7 @@ public class MainActivity extends AppCompatActivity {
         branch = (TextView)findViewById(R.id.branchTxt);
         branchTxt = (TextView)findViewById(R.id.branchDesc);
 
-        USER_TYPE = getIntent().getStringExtra("type");
-
-        Log.e("Type",""+USER_TYPE);
+        USER_TYPE = sf.getString("type","");
 
         if(USER_TYPE.equals("STU")) {
             btn1.setText("Show Attendance");
@@ -58,13 +69,13 @@ public class MainActivity extends AppCompatActivity {
             branchTxt.setVisibility(View.GONE);
             nameTxt.setVisibility(View.VISIBLE);
             nameDec.setVisibility(View.VISIBLE);
-            nameTxt.setText(current.getStringExtra("name"));
+            nameTxt.setText(sf.getString("name",""));
 
             btn1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     carrier = new Intent(MainActivity.this, StuAttendanceActivity.class);
-                    carrier.putExtra("id",getIntent().getIntExtra("id",0));
+                    carrier.putExtra("id",sf.getString("id",""));
                     startActivity(carrier);
                 }
             });
@@ -72,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     carrier = new Intent(MainActivity.this, StuRatingActivity.class);
-                    carrier.putExtra("id",getIntent().getIntExtra("id",0));
+                    carrier.putExtra("id",sf.getString("id",""));
                     startActivity(carrier);
                 }
             });
@@ -88,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             branchTxt.setVisibility(View.GONE);
             nameTxt.setVisibility(View.VISIBLE);
             nameDec.setVisibility(View.VISIBLE);
-            nameTxt.setText(current.getStringExtra("name"));
+            nameTxt.setText(sf.getString("name",""));
 
             btn1.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -115,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
             branchTxt.setVisibility(View.GONE);
             nameTxt.setVisibility(View.VISIBLE);
             nameDec.setVisibility(View.VISIBLE);
-            nameTxt.setText(current.getStringExtra("name"));
+            nameTxt.setText(sf.getString("name",""));
             //idTxt.setText(current.getStringExtra("id"));
 
             btn1.setOnClickListener(new View.OnClickListener() {

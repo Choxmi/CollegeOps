@@ -44,7 +44,7 @@ import java.util.concurrent.ExecutionException;
 
 public class FacEventsActivity extends AppCompatActivity implements AsyncResponse{
 
-    Spinner mnth,year,date,grade,sub;
+    Spinner grade,sub;
     EditText name,desc;
     Button submit,attach,picker;
     CheckBox privacy;
@@ -57,9 +57,6 @@ public class FacEventsActivity extends AppCompatActivity implements AsyncRespons
 
         grantPermission();
 
-        mnth = (Spinner)findViewById(R.id.mnthSpin);
-        year = (Spinner)findViewById(R.id.yrSpin);
-        date = (Spinner)findViewById(R.id.dateSpin);
         grade = (Spinner)findViewById(R.id.gradeSpin);
         sub = (Spinner)findViewById(R.id.subjectSpin);
         name = (EditText)findViewById(R.id.eventName);

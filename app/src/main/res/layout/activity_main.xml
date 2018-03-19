@@ -29,6 +29,7 @@
                 android:gravity="center_vertical"
                 android:text="Name :"
                 android:textAlignment="textEnd"
+                android:textColor="@color/colorText"
                 android:visibility="invisible" />
 
             <TextView
@@ -37,7 +38,8 @@
                 android:layout_height="33dp"
                 android:gravity="center_vertical"
                 android:text="ID :"
-                android:textAlignment="textEnd" />
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorText" />
 
             <TextView
                 android:id="@+id/branchDesc"
@@ -46,6 +48,7 @@
                 android:gravity="center_vertical"
                 android:text="Branch :"
                 android:textAlignment="textEnd"
+                android:textColor="@color/colorText"
                 android:visibility="invisible" />
         </LinearLayout>
 
@@ -60,19 +63,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="33dp"
                 android:gravity="center_vertical"
+                android:textColor="@color/colorText"
                 android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/idTxt"
                 android:layout_width="match_parent"
                 android:layout_height="33dp"
-                android:gravity="center_vertical" />
+                android:gravity="center_vertical"
+                android:textColor="@color/colorText" />
 
             <TextView
                 android:id="@+id/branchTxt"
                 android:layout_width="match_parent"
                 android:layout_height="33dp"
                 android:gravity="center_vertical"
+                android:textColor="@color/colorText"
                 android:visibility="invisible" />
         </LinearLayout>
     </LinearLayout>
@@ -99,21 +105,27 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Button" />
+            android:background="@null"
+            android:text="Button"
+            android:textColor="@color/colorPrimary" />
 
         <Button
             android:id="@+id/btn2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Button" />
+            android:background="@null"
+            android:text="Button"
+            android:textColor="@color/colorPrimary" />
 
         <Button
             android:id="@+id/btn3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@null"
             android:text="Button"
+            android:textColor="@color/colorPrimary"
             android:visibility="visible" />
 
         <Button
@@ -121,7 +133,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Button" />
+            android:background="@null"
+            android:text="Button"
+            android:textColor="@color/colorPrimary" />
     </LinearLayout>
 
     <Button
@@ -134,6 +148,7 @@
         android:layout_marginTop="144dp"
         android:background="@null"
         android:text="Logout"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.885"

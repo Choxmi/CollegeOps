@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -19,14 +20,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="@color/colorText" />
 
     <TextView
         android:id="@+id/privacy_display"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="@color/colorText" />
 
     <Button
         android:id="@+id/viewPosterBtn"
@@ -46,12 +49,15 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Feedback"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textColor="@color/colorText" />
 
     <Button
         android:id="@+id/add_feedback"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Feedback" />
+        android:background="@null"
+        android:text="Add Feedback"
+        android:textColor="@color/colorPrimary" />
 
 </LinearLayout>

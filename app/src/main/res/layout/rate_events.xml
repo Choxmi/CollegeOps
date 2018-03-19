@@ -35,6 +35,7 @@
         android:layout_marginTop="8dp"
         android:text="Event Updates"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textColor="@color/colorText"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

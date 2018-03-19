@@ -23,7 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Student" />
+            android:text="Student"
+            android:textColor="@color/colorText" />
 
         <RadioButton
             android:id="@+id/radioButton4"
@@ -31,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Faculty"
+            android:textColor="@color/colorText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </RadioGroup>
@@ -71,6 +73,7 @@
         android:ems="10"
         android:hint="Student Name"
         android:inputType="textPersonName"
+        android:textColor="@color/colorText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -87,6 +90,7 @@
         android:ems="10"
         android:hint="Enroll Number"
         android:inputType="textPersonName"
+        android:textColor="@color/colorText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -134,6 +138,7 @@
         android:layout_marginTop="8dp"
         android:background="@null"
         android:text="Add"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

@@ -2,6 +2,7 @@ package com.choxmi.collegeops;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,8 @@ import org.json.JSONObject;
 
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Choxmi on 12/15/2017.
@@ -30,11 +33,21 @@ public class LoginActivity extends AppCompatActivity implements AsyncResponse{
     Button login,signup;
     EditText userTxt;
     ProgressDialog progress;
+    SharedPreferences sf;
+    SharedPreferences.Editor sfe;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        sf = getSharedPreferences("vitam",MODE_PRIVATE);
+        sfe = sf.edit();
+
+        if(!sf.getString("id","").equals("")){
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
 
         typeSpinner = (Spinner)findViewById(R.id.typeSpinner);
         login = (Button)findViewById(R.id.loginBtn);
@@ -93,6 +106,15 @@ public class LoginActivity extends AppCompatActivity implements AsyncResponse{
             intent.putExtra("id", userId);
             intent.putExtra("grade", grade);
             intent.putExtra("branch", branch);
+
+            sfe.putString("type", userType);
+            sfe.putString("name", userTxt.getText().toString());
+            sfe.putString("id", ""+userId);
+            sfe.putString("grade", grade);
+            sfe.putString("branch", branch);
+
+            sfe.commit();
+
             startActivity(intent);
         }else{
             Toast.makeText(LoginActivity.this,"User Does not exist",Toast.LENGTH_LONG).show();

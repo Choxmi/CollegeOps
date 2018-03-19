@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center_horizontal"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@color/colorText" />
 
     <TextView
         android:id="@+id/idTxt"
@@ -18,11 +19,13 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center_horizontal"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@color/colorText" />
 
     <CheckBox
         android:id="@+id/attChk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:textColorLink="@color/colorPrimaryDark" />
 </LinearLayout>

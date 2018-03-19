@@ -4,12 +4,15 @@ import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -39,10 +42,15 @@ public class AdminFeedbackActivity extends AppCompatActivity implements AsyncRes
     ImageButton backBtn;
     Spinner feedbackSpinner;
     ProgressDialog progress;
-    Button analyzeBtn;
+    Button analyzeBtn,viewBtn;
     ArrayList<String> ids;
     HashMap<String,Integer> rateCount = new HashMap<String,Integer>();
     PieChart pieChart;
+
+    ArrayList<String> listItems=new ArrayList<String>();
+    ArrayAdapter<String> adapter;
+    ListView list;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +92,30 @@ public class AdminFeedbackActivity extends AppCompatActivity implements AsyncRes
             }
         });
 
+        viewBtn = (Button)findViewById(R.id.feedbackView);
+        viewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                LayoutInflater inflater= LayoutInflater.from(AdminFeedbackActivity.this);
+                View view=inflater.inflate(R.layout.feedback_tbl, null);
+                list = (ListView)view.findViewById(R.id.feedbackList);
+
+                adapter=new ArrayAdapter<String>(AdminFeedbackActivity.this,
+                        android.R.layout.simple_list_item_1,
+                        listItems);
+                list.setAdapter(adapter);
+
+                adapter.notifyDataSetChanged();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(AdminFeedbackActivity.this);
+                builder.setTitle("FeedBack");
+                builder.setView(view);
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+        });
+
         backBtn = (ImageButton)findViewById(R.id.backBtnFeedback);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,15 +133,23 @@ public class AdminFeedbackActivity extends AppCompatActivity implements AsyncRes
             progress.dismiss();
         }
         if(ja.toString().contains("feedback")){
-            Log.e("RES",response);
+
+            listItems.clear();
+
             List<PieEntry> entries=null;
             for(int i=0;i<ja.length();i++) {
                 JSONObject jo = ja.getJSONObject(i);
                 if(rateCount.get(jo.getString("rating")) == null){
                     rateCount.put(jo.getString("rating"),0);
+                }else {
+                    rateCount.put(jo.getString("rating"), (rateCount.get(jo.getString("rating"))) + 1);
                 }
-                rateCount.put(jo.getString("rating"),(rateCount.get(jo.getString("rating")))+1);
+
+                if(!(jo.getString("feedback")).equals(null)){
+                    listItems.add(jo.getString("user_name")+" : "+jo.getString("feedback"));
+                }
             }
+            viewBtn.setVisibility(View.VISIBLE);
             entries = new ArrayList<>();
             for(String key:rateCount.keySet()){
                 Log.e(key,""+rateCount.get(key));
